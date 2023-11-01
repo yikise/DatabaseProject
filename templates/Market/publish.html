@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}发布物品{% endblock %}
+{% block css %}<link href="{% static 'css/publish.css' %}" rel="stylesheet"/>{% endblock %}
+{% block signal %}
+    {% if request.session.is_login %}
+    <li><a href="/Market/">进入集市</a></li>
+    <li><a href="/Market/publish/">发布商品</a></li>
+    <li><a href="/Market/order/">我的订单</a></li>
+    <li><a href="/User/logout/">账号退出</a></li>
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <div class="inner text-center”>
+        <div class="col-md-8 offset-md-2">
+            <form class="form-publish" action="/Market/publish/" method="post" enctype="multipart/form-data">
+                {% if message %}
+                    <div class="alert alert-warning">{{ message }}</div>
+                {% endif %}
+                {% csrf_token %}
+                <h3 class="text-center">发布物品</h3>
+                <div class="form-group">
+                    {{ item_form.sellerName.label_tag }}
+                    {{ item_form.sellerName }}
+                </div>
+                <div class="form-group">
+                    {{ item_form.category.label_tag }}
+                    {{ item_form.category }}
+                </div>
+                <div class="form-group">
+                    {{ item_form.itemName.label_tag }}
+                    {{ item_form.itemName }}
+                </div>
+                <div class="form-group">
+                    {{ item_form.purchaseYear.label_tag }}
+                    {{ item_form.purchaseYear }}
+                </div>
+                <div class="form-group">
+                    {{ item_form.price.label_tag }}
+                    {{ item_form.price }}
+                </div>
+                <div class="form-group">
+                    {{ item_form.item_photo.label_tag }}
+                    {{ item_form.item_photo }}
+                </div>
+                <div class="form-group">
+                    {{ item_form.itemDesc.label_tag }}
+                    {{ item_form.itemDesc }}
+                </div>
+                <div class="form-group">
+                    {{ item_form.location.label_tag }}
+                    {{ item_form.location }}
+                </div>
+                <div class="form-group">
+                    {{ item_form.new_old_degree.label_tag }}
+                    {{ item_form.new_old_degree }}
+                </div>
+                <button type="submit" class="btn btn-primary float-right">发布物品</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{% endblock %}

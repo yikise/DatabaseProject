@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}主页{% endblock %}
+{% block signal %}
+    {% if request.session.is_login %}
+    <li><a href="/User/logout/">账号退出</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h2>支付订单</h2>
+    <p>订单编号：{{ order.order_id }}</p>
+    <p>订单金额：{{ order.order_price }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">支付</button>
+    </form>
+{% endblock %}

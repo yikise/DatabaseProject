@@ -1,0 +1,50 @@
+/*.card {*/
+/*    transition: transform 0.2s, box-shadow 0.2s;*/
+/*}*/
+
+/*.card:hover {*/
+/*    transform: scale(1.05);*/
+/*    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);*/
+/*}*/
+
+/*.card-img-top {*/
+/*    object-fit: cover;*/
+/*}*/
+
+/*.card-footer {*/
+/*    align-self: flex-end;*/
+/*}*/
+/* 自定义卡片样式 */
+.card {
+    transition: transform 0.2s, box-shadow 0.2s; /* 添加过渡效果 */
+}
+
+/* 卡片悬停效果 */
+.card.hover-effect:hover {
+    transform: scale(1.05); /* 当悬停时，卡片会稍微放大 */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* 添加阴影效果 */
+}
+
+/* 自定义卡片底部样式 */
+.card-footer.bg-transparent {
+    border-top: 1px solid #eee; /* 添加边框 */
+}
+/* 增加卡片之间的外边距 */
+.col-md-4.mb-4 {
+    margin-bottom: 30px; /* 调整外边距的值来增加卡片之间的间距 */
+}
+
+/* 卡片样式 */
+.card {
+    padding: 15px; /* 增加内边距 */
+    border: 1px solid #eee; /* 添加边框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    transition: transform 0.2s, box-shadow 0.2s; /* 添加过渡效果 */
+}
+
+/* 卡片悬停效果 */
+.card:hover {
+    transform: scale(1.05); /* 当悬停时，卡片会稍微放大 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 增强阴影效果 */
+}
+

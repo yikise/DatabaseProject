@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}主页{% endblock %}
+{% block css %}<link href="{% static 'css/card.css' %}" rel="stylesheet"/>{% endblock %}
+{% block signal %}
+    {% if request.session.is_login %}
+    <li><a href="/User/logout/">账号退出</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <div class="row justify-content-center"> <!-- 添加 justify-content-center 类来使卡片在行中居中 -->
+        {% for i in itemList %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm hover-effect">
+                        <img class="card-img-top" src="{{ i.item_photo.url }}" alt="Card image cap" height="200px" width="100%">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ i.itemName }}</h5>
+                            <p class="card-text">{{ i.itemDesc }}</p>
+                            <p class="card-text">位置：{{ i.location }}</p>
+                            <p class="card-text"><strong>售价：{{ i.price }} 元</strong></p>
+                            <p class="card-text"><strong>状态: {{ i.get_itemStatus_display }}</strong></p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="{{ i.admin_remove_url }}" class="btn btn-success btn-block">下架商品</a>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+{% endblock %}

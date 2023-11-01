@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}主页{% endblock %}
+{% block css %}<link href="{% static 'css/card.css' %}" rel="stylesheet"/>{% endblock %}
+{% block signal %}
+    {% if request.session.is_login %}
+    <li><a href="/Market/">进入集市</a></li>
+    <li><a href="/Market/publish/">发布商品</a></li>
+    <li><a href="/Market/order/">我的订单</a></li>
+    <li><a href="/User/logout/">账号退出</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="mt-3 pt-4 text-center">
+    {% if request.session.is_login %}
+        <h1><font color="white">你好，{{ request.session.user_name }}！欢迎回来！</font></h1>
+        <h2><font color="white">请问你想要？</font></h2>
+        <div class="mt-4 card-img-top">
+            <a href="/Market/" class="btn btn-lg btn-default card">进入市场</a>
+        </div>
+        <div style="margin-top: 10px;"> <!-- 添加自定义样式来增加间距 -->
+            <a href="/Market/publish/" class="btn btn-lg btn-default card">发布商品</a>
+        </div>
+    {% else %}
+    <h1><font color="white">欢迎光临校园二手交易集市系统！</font></h1>
+    </div>
+    {% endif %}
+{% endblock %}
